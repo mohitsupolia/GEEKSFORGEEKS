@@ -1,0 +1,18 @@
+class Solution
+{
+    
+    ArrayList<Integer> search(String pattern, String text)
+    {
+        // your code here
+        ArrayList<Integer> list = new ArrayList<>();
+        int index = 0;
+        while (index != -1) {
+            index = text.indexOf(pattern, index);
+            if (index != -1) {
+                list.add(index + 1); 
+                index++;
+            }
+        }
+        return list;
+    }
+}
