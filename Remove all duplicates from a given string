@@ -1,0 +1,13 @@
+class Solution {
+    String removeDuplicates(String str) {
+        Map<Character,Boolean>map=new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for(char ch:str.toCharArray()){
+            if(!map.containsKey(ch)){
+                map.put(ch,true);
+                sb.append(ch);
+            }
+        }
+        return sb.toString();
+    }
+}
