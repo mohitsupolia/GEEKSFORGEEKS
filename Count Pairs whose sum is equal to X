@@ -1,0 +1,20 @@
+class Solution {
+
+    public static int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2,
+                          int x) {
+        // add your code here
+        HashSet<Integer> set=new HashSet<>();
+        Iterator<Integer> itr1=head1.iterator();
+        while(itr1.hasNext()){
+            set.add(itr1.next());
+        }
+        int ans=0;
+        Iterator<Integer> itr2=head2.iterator();
+        while(itr2.hasNext()){
+            if(set.contains(x-itr2.next())){
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
