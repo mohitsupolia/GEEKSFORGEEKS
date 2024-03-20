@@ -1,0 +1,28 @@
+class Solution{
+       int maxSum = Integer.MIN_VALUE;
+    int maxLength = 0;
+
+    public int sumOfLongRootToLeafPath(Node root) {
+        totalSum(root, 0, 0);
+        return maxSum;
+    }
+
+    void totalSum(Node node, int pathLength, int pathSum) {
+        if (node == null) {
+            return;
+        }
+
+        pathLength++;
+        pathSum += node.data;
+
+        if (node.left == null && node.right == null) {
+            if (pathLength > maxLength || (pathLength == maxLength && pathSum > maxSum)) {
+                maxLength = pathLength;
+                maxSum = pathSum;
+            }
+        }
+
+        totalSum(node.left, pathLength, pathSum);
+        totalSum(node.right, pathLength, pathSum);
+    }
+}
