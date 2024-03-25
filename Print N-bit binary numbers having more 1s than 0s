@@ -1,0 +1,30 @@
+class Solution {
+    ArrayList<String>ans;
+    ArrayList<String> NBitBinary(int N) {
+        // code here
+        ans=new ArrayList<>();
+        int count0=0,count1=0;
+        solve(count0, count1, N, "");
+       return ans; 
+    }
+    void solve(int count0, int count1, int N, String output){
+        // Base Case.
+        if(N==0)
+        {
+            ans.add(output);
+            return;
+        }
+        // For 1..
+        if(N>0){
+            String output1=new String(output);
+            output1+="1";
+            solve(count0+1, count1,  N-1, output1);
+        }
+        // For 0...
+        if(count0>count1){
+            String output2=new String(output);
+            output2+="0";
+            solve(count0, count1+1, N-1, output2);
+        }
+    }
+}
