@@ -1,0 +1,37 @@
+
+class Solution {
+    int[] vis;
+    public boolean isEularCircuitExist(int v, ArrayList<ArrayList<Integer>> adj) {
+       //1...
+       vis=new int[v+1];
+       // Checking connected or not...
+       dfs(0, vis, adj);
+       
+       for(int i=0;i<v;i++){
+           if(vis[i]==0 && adj.get(i).size()>0)
+           return false;
+       }
+       // 2...
+       int cnt=0;
+       for(int i=0;i<v;i++){
+           if((adj.get(i).size()%2)==1)
+           cnt++;
+       }
+       // Violates the condition for exactly once...
+       if(cnt>2)
+       return false;
+       // Making, sure exactly once and diff start and end...
+       else if(cnt==2)
+       return false;
+       // if(cnt==0)
+       else
+       return true;
+    }
+    void dfs(int u, int[] vis, ArrayList<ArrayList<Integer>> adj){
+        vis[u]=1;
+        for(int v:adj.get(u)){
+            if(vis[v]==0)
+            dfs(v, vis, adj);
+        }
+    }
+}
