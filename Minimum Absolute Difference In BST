@@ -1,0 +1,33 @@
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+};
+*/
+class Solution
+{
+    int prev;
+    int ans;
+    int absolute_diff(Node root)
+    {
+        ans=Integer.MAX_VALUE;
+        prev=Integer.MAX_VALUE;
+        inorder(root);
+        
+        return ans;
+    }
+    
+    void inorder(Node root){
+        if(root==null){
+            return;
+        }
+        inorder(root.left);
+        
+        if(prev!=Integer.MAX_VALUE){
+            ans=Math.min(ans, root.data-prev);
+        }
+        prev=root.data;
+        inorder(root.right);
+    }
+}
