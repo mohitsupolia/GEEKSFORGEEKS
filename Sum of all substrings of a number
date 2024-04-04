@@ -1,0 +1,18 @@
+class Solution
+{
+    //Function to find sum of all possible substrings of the given string.
+    public static long sumSubstrings(String s)
+    {
+    //Your code here
+    long totalSum=0;
+    long sumAtIndex[]=new long[s.length()];
+    
+    sumAtIndex[0]=totalSum=(long)(s.charAt(0))-48;
+    for(int i=1;i<s.length();i++){
+        sumAtIndex[i]=((i+1)*((long)(s.charAt(i))-48)+
+        (10*sumAtIndex[i-1]))%1000000007;
+        totalSum=(totalSum+sumAtIndex[i])%1000000007;
+    }
+    return (long)(totalSum);
+    }
+}
