@@ -1,0 +1,27 @@
+class Solution {
+    public int minPoints(int points[][], int m, int n) {
+    int memo[][] = new int[m + 1][n + 1];
+        for (int[] row : memo) {
+            Arrays.fill(row, Integer.MAX_VALUE);
+        }
+        return dfs(0, 0, points, m, n, memo);
+    }
+
+    int dfs(int i, int j, int arr[][], int m, int n, int memo[][]) {
+        if (i == m - 1 && j == n - 1)
+            return Math.max(1, 1 - arr[i][j]); // Corrected the base case
+        if (memo[i][j] != Integer.MAX_VALUE)
+            return memo[i][j];
+        int ans = Integer.MAX_VALUE;
+        if (j + 1 < n) {
+            int x = dfs(i, j + 1, arr, m, n, memo) - arr[i][j];
+            ans = Math.min(ans, x);
+        }
+        if (i + 1 < m) {
+            int y = dfs(i + 1, j, arr, m, n, memo) - arr[i][j];
+            ans = Math.min(ans, y);
+        }
+        memo[i][j] = Math.max(1, ans); // Corrected the assignment
+        return memo[i][j];
+    }
+}
