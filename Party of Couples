@@ -1,0 +1,10 @@
+class Solution{
+    static int findSingle(int n, int arr[]){
+        // code here
+        int sp=0;
+        for(int i=0;i<n;i++){
+            sp^=arr[i];
+        }
+        return sp;
+    }
+}
