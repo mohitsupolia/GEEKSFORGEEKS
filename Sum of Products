@@ -1,0 +1,27 @@
+class Solution {
+    static long pairAndSum(int n, long arr[]) {
+        // code here
+        // this code take more time......
+        
+        // long ans=0;
+        // for(int i=0;i<n;i++){
+        //     for(int j=i+1;j<n;j++){
+        //       ans+=(arr[i] & arr[j]);
+        //     }
+        // }
+        // return ans;
+        
+        //  
+        
+        long ans=0;
+        for(int i=0;i<32;i++){
+            long k=0;
+            for(int j=0;j<n;j++){
+                if((arr[j] & (1<<i))!=0)
+                k++;
+            }
+            ans+=(1<<i)*((k)*(k-1))/2;
+        }
+        return ans;
+    }
+}
