@@ -1,0 +1,26 @@
+class Solution
+{
+    public static int[] countElements(int a[], int b[], int n, int query[], int q)
+    {
+        int[] result = new int[q];
+        // Store frequency of element b...
+        int[] freq = new int[100001]; 
+        // Calculate frequency of each element in array b...
+        for (int num : b) {
+            freq[num]++;
+        }
+        // Calculate prefix sum of freq...
+        for (int i = 1; i < freq.length; i++) {
+            freq[i] += freq[i - 1];
+        }
+        // Process each query...
+        for (int i = 0; i < q; i++) {
+            int x = query[i];
+            int element = a[x];
+            // count from freq array...
+            result[i] = (element == 0) ? 0 : freq[element];
+        }
+        return result;
+        
+    }
+}
