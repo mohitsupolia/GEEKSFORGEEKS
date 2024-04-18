@@ -1,0 +1,18 @@
+class Solution
+{
+    //Function to find two repeated elements.
+    public int[] twoRepeated(int arr[], int n)
+    {
+        // Your code here
+        int res[]=new int[2];
+        int count=0;
+        HashMap<Integer, Integer> map=new HashMap<>();
+        for(int i:arr){
+            map.put(i, map.getOrDefault(i,0)+1);
+            if(map.get(i) == 2)
+            res[count++] = i;
+        }
+        return res;
+    }
+    
+}
