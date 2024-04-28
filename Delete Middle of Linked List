@@ -1,0 +1,22 @@
+class Solution {
+    Node deleteMid(Node head) {
+        // This is method only submission.
+        // You only need to complete the method.
+        if(head == null || head.next == null)
+        {
+             return null;
+        }
+        
+        Node slow = head;
+        Node fast = head;
+        Node temp=null;
+        while(fast!=null && fast.next!=null)
+        {
+            temp=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+            temp.next=slow.next;
+        return head;
+    }
+}
