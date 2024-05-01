@@ -1,0 +1,25 @@
+class Solution {
+    
+    public Node arrangeCV(Node head){
+        //write code here and return the head of changed linked list
+        Node vowel = new Node('a');
+        Node cons = new Node('b');
+        Node v=vowel;
+        Node c=cons;
+        while(head!=null){
+           char temp = head.data;
+           if(temp=='a' || temp=='e' || temp=='i' || temp=='o' || temp=='u'){
+               vowel.next = head;
+               vowel=vowel.next;
+           }
+           else{
+               cons.next=head;
+               cons=cons.next;
+           }
+           head=head.next;
+        }
+        cons.next=null;
+        vowel.next=c.next;
+        return v.next;
+    }
+}
