@@ -1,0 +1,36 @@
+
+class Tree {
+    // Function to serialize a tree and return a list containing nodes of tree.
+    ArrayList<Integer> al;
+    public ArrayList<Integer> serialize(Node root) {
+        // code here
+       al =  new ArrayList<>();
+       fun(root);
+       return al;
+    }
+    void fun(Node root){
+        if(root == null){
+            al.add(-1);
+            return;
+        }
+        al.add(root.data);
+        fun(root.left);
+        fun(root.right);
+    }
+
+    // Function to deserialize a list and construct the tree.
+    int index = -1;
+    public Node deSerialize(ArrayList<Integer> A) {
+        // code here
+
+       index++;
+        if(A.get(index) == -1)
+        return null;
+        
+        Node root = new Node(A.get(index));
+        root.left = deSerialize(A);
+        root.right = deSerialize(A);
+        
+        return root;
+    }
+};
