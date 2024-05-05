@@ -1,0 +1,23 @@
+class Solution{
+    ArrayList<Integer> list;
+    public ArrayList <Integer> verticalSum(Node root) {
+        
+        list = new ArrayList<>();
+        TreeMap<Integer,Integer> map = new TreeMap<>();
+        helper(root, 0, map);
+        
+        for(int value: map.values()){
+            list.add(value);
+        }
+        return list;
+    }
+    
+    void helper(Node root, int vd, TreeMap<Integer, Integer> map){
+        if(root == null)
+        return;
+        
+        helper(root.left, vd-1, map);
+        map.put(vd, map.getOrDefault(vd,0) + root.data);
+        helper(root.right, vd+1, map);
+    }
+}
