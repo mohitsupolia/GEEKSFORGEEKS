@@ -1,0 +1,12 @@
+class Solution {
+    public int findPair(int n, int x, int[] arr) {
+        // code here
+        HashSet<Integer> set = new HashSet<>();
+        for(int i : arr){
+            if(set.contains(i+x) || set.contains(i-x))
+            return  1;
+            set.add(i);
+        }
+        return -1;
+    }
+}
