@@ -1,0 +1,27 @@
+class Solution {
+    public static int findClosest(int n, int k, int[] arr) {
+        // code here
+        int low = 0;
+        int high = n-1;
+        while(low<high && high-low>1){
+            int mid = low+(high-low)/2;
+            if(arr[mid] == k)
+            return arr[mid];
+            
+            if(arr[mid]>k)
+            high = mid;
+            
+            if(arr[mid]<k)
+            low= mid;
+        }
+        int leftDiff = Math.abs(k-arr[low]);
+        int rightDiff = Math.abs(k-arr[high]);
+        
+        if(leftDiff == rightDiff)
+        return arr[high];
+        if(leftDiff<rightDiff)
+        return arr[low];
+        else
+        return arr[high];
+    }
+}
