@@ -1,0 +1,33 @@
+class Solution {
+    static int mod = 1000000007;
+    public static int countPartitions(int n, int d, int[] arr) {
+        int sum = 0;
+        for(int x : arr)
+        sum+=x;
+        if(sum<d || (sum-d)%2!=0)
+        return 0;
+        
+        int k = (sum-d)/2;
+        
+        int dp[][] = new int[n+1][sum+1];
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=sum;j++){
+                dp[i][j] = -1;
+            }
+        }
+        return fun(0, k, arr, dp);
+    }
+    static int fun(int pos, int sum, int arr[], int dp[][]){
+        if(sum<0)
+        return 0;
+        if(pos == arr.length)
+        return sum==0 ? 1:0;
+        
+        if(dp[pos][sum] != -1)
+        return dp[pos][sum];
+        
+        dp[pos][sum] = (fun(pos+1, sum, arr, dp)%mod+
+        fun(pos+1, sum-arr[pos], arr, dp)%mod)%mod;
+        return dp[pos][sum];
+    }
+}
