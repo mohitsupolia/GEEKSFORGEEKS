@@ -1,0 +1,32 @@
+class Solution {
+    long findSwapValues(long a[], int n, long b[], int m) {
+        // Your code goes here
+        long soa1 = 0;
+        long soa2 = 0;
+        Arrays.sort(a);
+        Arrays.sort(b);
+        for(long element : a)
+        soa1 += element;
+        for(long element : b)
+        soa2 += element;
+        
+        long target = (soa1 - soa2);
+        int i=0;
+        int j=0;
+        
+        while(i<a.length && j<b.length){
+            long cur = 2* (a[i] - b[j]);
+            
+            if(cur == target)
+            return 1;
+            
+            else if(cur<target){
+                i++;
+            }
+            else{
+                j++;
+            }
+        }
+        return -1;
+    }
+}
