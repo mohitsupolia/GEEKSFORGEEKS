@@ -1,0 +1,21 @@
+/*Complete the function below*/
+class Solution {
+    public int findExtra(int n, int arr1[], int arr2[]) {
+        // add code here.
+        int high=n-1;
+        int low=0;
+        
+        
+        while(low<high){
+            int mid=(low+high)/2;
+                if(arr2[mid]==arr1[mid]){
+
+//  means left side is equal, no need to search
+                low = mid+1;
+            } else {
+                high=mid;
+            }
+        }
+        return low;
+    }
+}
