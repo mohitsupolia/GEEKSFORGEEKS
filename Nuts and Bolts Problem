@@ -1,0 +1,31 @@
+class Solution {
+
+
+    void matchPairs(int n, char nuts[], char bolts[]) {
+
+        HashMap<Character,Integer> m = new HashMap<>();
+        char c[] = {'!','#','$','%','&','*','?','@','^'};
+        for(int i=0; i<c.length; i++) m.put(c[i],i+1);
+
+
+        char temp[] = new char[10];
+        Arrays.fill(temp,'(');
+        for(char a:nuts){
+            temp[m.get(a)] = a;
+        }
+
+
+        int i=0;
+        for(int j=0; j<10; j++){
+            if(temp[j]!='('){
+                nuts[i++]=temp[j];
+                temp[j]='(';
+            }
+        }
+
+
+        for(int j=0; j<n; j++){
+            bolts[j]=nuts[j];
+        }
+    }
+}
