@@ -1,0 +1,27 @@
+
+class Solution {
+     public static int countNumberswith4(int n) {
+        
+        int number=0;
+        for(int i = 4 ;i<=n ;i++){
+            
+            if(is4Contain(i)){
+                number +=1;
+            }
+        }
+        return number;
+       
+    }
+    private static boolean is4Contain(int n){
+        
+        while(n>0){
+            int r=n%10;
+            if(r==4){
+                return true;
+            }
+            n=n/10;
+        }
+        
+        return false;
+    }
+}
