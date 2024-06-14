@@ -1,0 +1,16 @@
+class Solution {
+    static String armstrongNumber(int n) {
+        int x,y=0;
+        int a=n;
+        while(n>0)
+        {
+            x=n%10;
+            y=y+x*x*x;
+            n=n/10;
+        }
+        if(a==y)
+        return "true";
+        else
+        return "false";
+    }
+}
