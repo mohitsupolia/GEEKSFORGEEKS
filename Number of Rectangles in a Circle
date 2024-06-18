@@ -1,0 +1,21 @@
+class Solution {
+
+    int rectanglesInCircle(int r) {
+
+        // code here
+
+        double count=0;
+
+        for (int i=1;i<2*r;i++){
+
+            double w = Math.sqrt(4*r*r-i*i);
+
+            count+= Math.floor(w);
+
+        }
+
+        return (int)count;
+
+    }
+
+}
