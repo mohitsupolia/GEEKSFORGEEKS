@@ -1,0 +1,24 @@
+class Solution {
+
+    String compareFrac(String str) {
+        // Code here
+        
+        int firstSlashIdx = str.indexOf('/');
+        int secondSlashIdx = str.indexOf('/', firstSlashIdx + 1);
+        int commaIdx = str.indexOf(',');
+        int num1 = Integer.parseInt(str.substring(0,firstSlashIdx));
+        int den1 = Integer.parseInt(str.substring(firstSlashIdx+1,commaIdx));
+        int num2 = Integer.parseInt(str.substring(commaIdx+2,secondSlashIdx));
+        int den2 = Integer.parseInt(str.substring(secondSlashIdx+1,str.length()));
+        
+        double val1 = (double)num1/den1;
+        double val2 = (double)num2/den2;
+        if(val1 == val2) return "equal";
+        else if(val1 > val2){
+            return str.substring(0,commaIdx);
+        }
+        else{
+            return str.substring(commaIdx+2,str.length());
+        }
+    }
+}
