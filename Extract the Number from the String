@@ -1,0 +1,28 @@
+class Solution {
+    long ExtractNumber(String sentence) {
+        // code here
+        String arr[]=sentence.split(" ");
+        long ans=-1;
+        for(int i=0;i<arr.length;i++){
+         char c=arr[i].charAt(0);
+            if(Character.isDigit(c)){
+               boolean flag=check(arr[i]);
+                if(flag){
+                    ans=Math.max(ans,Long.parseLong(arr[i]));
+                   
+                }
+            }
+        }
+        return ans;
+    }
+    
+    boolean check(String s){
+        
+        for(int j=0;j<s.length();j++){
+            if(s.charAt(j)=='9'){
+                return false;
+            }
+        }
+        return true;
+    }
+}
