@@ -1,0 +1,14 @@
+class Solution {
+    public boolean compute(Node root) {
+        StringBuilder s=new StringBuilder();
+        while(root!=null){
+            s.append(root.data);
+            root=root.next;
+        }
+        
+        String str1=s.toString();
+        String str2=s.reverse().toString();
+  
+        return str1.equals(str2);
+    }
+}
