@@ -1,0 +1,18 @@
+class Solution {
+    static int maxVLevel = 0;
+    static int minVLevel = Integer.MAX_VALUE;
+    public int verticalWidth(Node root) {
+        if(root == null) return 0;
+        maxVLevel = 0;
+        minVLevel = Integer.MAX_VALUE;
+        helper(root, 0);
+        return maxVLevel - minVLevel + 1;
+    }
+    public void helper(Node root, int vlevel){
+        if(root == null) return;
+        minVLevel = Math.min(minVLevel, vlevel);
+        maxVLevel = Math.max(maxVLevel, vlevel);
+        helper(root.left, vlevel-1);
+        helper(root.right, vlevel+1);
+    }
+}
