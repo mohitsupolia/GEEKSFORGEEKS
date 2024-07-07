@@ -1,0 +1,22 @@
+class Solution {
+ ArrayList<Integer> arr=new ArrayList<>();
+    public ArrayList<Integer> Ancestors(Node root, int target) {
+        // add your code here
+       
+    
+       find(root,target);
+        return arr;
+    }
+    
+    public boolean find(Node root,int target){
+       if(root==null)return false;
+       if(root.data==target)return true;
+       
+       if(find(root.left, target) || find(root.right, target)){
+           arr.add(root.data);
+           return true;
+       }
+       
+       return false;
+    }
+}
