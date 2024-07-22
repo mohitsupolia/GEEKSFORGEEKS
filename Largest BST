@@ -1,0 +1,38 @@
+class Test{
+    int minVal;
+    int maxVal;
+    int size;
+    
+    Test(int mi, int ma, int s){
+        minVal = mi;
+        maxVal =  ma;
+        size = s;
+    }
+}
+
+class Solution{
+    
+    // Return the size of the largest sub-tree which is also a BST
+    static int largestBst(Node root)
+    {
+        // Write your code here
+        return solve(root).size;
+    }
+    
+    static Test solve(Node root){
+        if(root == null)
+        return new Test(Integer.MAX_VALUE, Integer.MIN_VALUE, 0);
+        
+        Test left = solve(root.left);
+        Test right = solve(root.right);
+        
+        if(left.maxVal < root.data && root.data < right.minVal){
+            return new Test(Math.min(root.data, left.minVal),
+            Math.max(root.data, right.maxVal),
+            left.size + right.size + 1);
+        }
+        return new Test(Integer.MIN_VALUE, Integer.MAX_VALUE, 
+        Math.max(left.size, right.size));
+    }
+    
+}
