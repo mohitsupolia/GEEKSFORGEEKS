@@ -1,0 +1,20 @@
+class Solution {
+    // Function to return a list of integers denoting the node
+    // values of both the BST in a sorted order.
+    public List<Integer> merge(Node root1, Node root2) {
+        List<Integer> list = new ArrayList<>();
+        iterate(list, root1);
+        iterate(list, root2);
+        Collections.sort(list);
+        return list;
+    }
+    public void iterate(List<Integer> list, Node root){
+        list.add(root.data);
+        if(root.left!=null){
+            iterate(list, root.left);
+        }
+        if(root.right!=null){
+            iterate(list, root.right);
+        }
+    }
+}
