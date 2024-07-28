@@ -1,0 +1,22 @@
+class Solution {
+    String removeDups(String str) {
+        // code here
+        // String res = "";
+        // TreeSet<String> set = new TreeSet<>();
+        // set.add(str);
+        
+        // Iterator<String> itr = set.iterator();
+        // while(itr.hasNext()){
+        //     res = itr.next();
+        // }
+        // return res;
+        
+        String ans = "";
+        HashSet<Character> set = new HashSet<>();
+        for(int i=0;i<str.length();i++){
+            if(set.add(str.charAt(i)))
+            ans += str.charAt(i);
+        }
+        return ans;
+    }
+}
