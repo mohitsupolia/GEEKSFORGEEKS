@@ -1,0 +1,31 @@
+class Solution {
+    public long kthElement(int k, int arr1[], int arr2[]) {
+        // code here
+        
+        int total = arr1.length + arr2.length;
+        
+        ArrayList<Integer> latestArray = new ArrayList();
+        
+       
+        
+        for(int i = 0; i < arr1.length; i++) {
+            latestArray.add(arr1[i]);
+        }
+        
+        for(int i=0; i < arr2.length; i++) {
+            latestArray.add(arr2[i]);
+        }
+        
+        Integer[] array = latestArray.toArray(new Integer[0]);
+        
+        Arrays.sort(array);
+        
+        int result = array[k-1];
+        
+        long output = result;
+        
+      //  long result = (long) array[k];
+        
+        return output;
+    }
+}
