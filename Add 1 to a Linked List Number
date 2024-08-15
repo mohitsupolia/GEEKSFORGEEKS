@@ -1,0 +1,23 @@
+class Solution {
+    public Node addOne(Node head) {
+        // code here.
+        int carry = helper(head);
+        if(carry > 0){
+            Node node = new Node(1);
+            node.next = head;
+            head = node;
+        }
+        return head;
+    }
+    
+    private int helper(Node node){
+        if(node == null) return 1;
+        int carry = helper(node.next);
+        node.data = node.data+carry;
+        if(node.data > 9){
+            node.data = 0;
+            return 1;
+        }
+        return 0;
+    }
+}
