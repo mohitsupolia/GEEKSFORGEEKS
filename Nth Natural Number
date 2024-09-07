@@ -1,0 +1,12 @@
+class Solution {
+    long findNth(long n) {
+        // code here
+    String ans = "";
+    while(n>0){
+        long r = n % 9;
+        ans = r+ans;
+        n = n/9;
+    }
+    return Long.parseLong(ans);
+    }
+}
