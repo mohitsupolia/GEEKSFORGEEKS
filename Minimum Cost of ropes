@@ -1,0 +1,23 @@
+//Back-end complete function Template for Java
+class Solution {
+    // Function to return the minimum cost of connecting the ropes.
+    public long minCost(long[] arr) {
+        // code here
+        long ans=0;
+        
+        PriorityQueue<Long>pq=new PriorityQueue<>();
+        
+        for(int i=0;i<arr.length;i++){
+            pq.add(arr[i]);
+        }
+        
+        while(pq.size()>1){
+            long x=pq.poll();
+            long y=pq.poll();
+            ans=ans+x+y;
+            pq.add(x+y);
+        }
+        
+        return ans;
+    }
+}
