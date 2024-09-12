@@ -1,0 +1,12 @@
+class Solution {
+    int getMiddle(Node head) {
+        // Your code here.
+        Node high=head;
+        Node low=head;
+        while(high!=null && high.next!=null){
+            high=high.next.next;
+            low=low.next;
+        }
+        return low.data;
+    }
+}
