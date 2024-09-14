@@ -1,0 +1,30 @@
+class Solution {
+    void rearrange(ArrayList<Integer> arr) {
+        // code here
+        int i=0,j=0;
+        int n=arr.size();
+        int idx=0;
+        int res[]=new int[n];
+        while(idx<n){
+            while(i<n&&arr.get(i)<0){
+                i++;
+            }
+              if (i < n) {
+                res[idx++] = arr.get(i);
+                i++;
+            }
+            while(j<n&&arr.get(j)>=0){
+                j++;
+            }
+              if (j < n) {
+                res[idx++] = arr.get(j);
+                j++;
+            }
+        }
+     
+        for(int k=0;k<n;k++){
+            arr.set(k,res[k]);
+        }
+        
+    }
+}
