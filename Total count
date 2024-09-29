@@ -1,0 +1,27 @@
+class Solution {
+    int totalCount(int k, int[] arr) {
+        int n = arr.length;
+        //ArrayList<Integer> ans = new ArrayList<>();
+        int cnt=0;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] <= k) {
+                cnt++;
+                //ans.add(arr[i]);
+            } else {
+                int result = arr[i] / k;  // how many full k's
+                int rem = arr[i] % k;     // remainder
+                cnt+=result;
+
+                
+                if (rem > 0) {
+                    //ans.add(rem);
+                    cnt++;
+                }
+            }
+        }
+
+        return cnt;
+        //ans.size()+cnt;
+    }
+}
