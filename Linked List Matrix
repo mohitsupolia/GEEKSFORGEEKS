@@ -1,0 +1,20 @@
+class Solution {
+    static Node construct(int arr[][]) {
+        // Add your code here.
+        int n = arr.length-1;
+        Node[] res = new Node[n+1];
+        for(int i=n;i>=0;i--){
+            for(int j=n;j>=0;j--){
+                Node node = new Node(arr[i][j]);
+                if(i!=n){
+                    node.down = res[j];
+                }
+                if(j!=n){
+                    node.right = res[j+1];
+                }
+                res[j] = node;
+            }
+        }
+        return res[0];
+    }
+}
