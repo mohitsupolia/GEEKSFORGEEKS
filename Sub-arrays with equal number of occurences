@@ -1,0 +1,24 @@
+class Solution {
+
+    static int sameOccurrence(int arr[], int x, int y) {
+        // write code here
+        Map<Integer, Integer> map = new HashMap<>();
+        int countDiff = 0;
+        int ans = 0;
+        map.put(0,1);
+        
+        for(int i : arr){
+            if(i == x){
+                countDiff++;
+            }
+            else if(i == y){
+                countDiff--;
+            }
+            if(map.containsKey(countDiff)){
+                ans += map.get(countDiff);
+            }
+            map.put(countDiff, map.getOrDefault(countDiff, 0)+1);
+        }
+        return ans;
+    }
+}
