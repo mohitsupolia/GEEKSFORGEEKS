@@ -1,0 +1,55 @@
+import java.util.*;
+
+class Solution {
+    public int countTriplets(int[] arr, int target) {
+        int n = arr.length;
+        int count = 0;
+
+        // Iterate through each element as the first element of the triplet
+        for (int i = 0; i < n - 2; i++) {
+            int left = i + 1;  // Start pointer for the second element
+            int right = n - 1; // End pointer for the third element
+
+            // Use two pointers to find pairs with the remaining sum
+            while (left < right) {
+                int sum = arr[i] + arr[left] + arr[right];
+
+                if (sum == target) {
+                    // Count triplets and ensure we consider all valid combinations
+                    int leftVal = arr[left];
+                    int rightVal = arr[right];
+
+                    if (leftVal == rightVal) {
+                        int totalPairs = right - left + 1;
+                        count += totalPairs * (totalPairs - 1) / 2;
+                        break;
+                    }
+
+                    int leftCount = 1, rightCount = 1;
+
+                    // Count duplicates for the left value
+                    while (left + 1 < right && arr[left + 1] == leftVal) {
+                        left++;
+                        leftCount++;
+                    }
+
+                    // Count duplicates for the right value
+                    while (right - 1 > left && arr[right - 1] == rightVal) {
+                        right--;
+                        rightCount++;
+                    }
+
+                    count += leftCount * rightCount;
+                    left++;
+                    right--;
+                } else if (sum < target) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+
+        return count;
+    }
+}
